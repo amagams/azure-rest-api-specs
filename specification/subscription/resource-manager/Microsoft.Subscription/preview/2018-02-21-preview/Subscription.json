@@ -1,7 +1,7 @@
 {  
    "swagger":"2.0",
    "info":{  
-      "version":"1",
+      "version":"2018-03-01-preview",
       "title":"SubscriptionManagementClient",
       "description":"Subscription management client provides an interface to create and manage Azure subscriptions programmatically."
    },
@@ -19,7 +19,7 @@
       "/providers/Microsoft.Subscription/operations":{  
          "get":{  
             "description":"Lists all of the available Microsoft.Subscription API operations.",
-            "operationId":"SubscriptionOperationMetadata_list",
+            "operationId":"Operations_List",
             "parameters":[  
                {  
                   "$ref":"#/parameters/apiVersionParameter"
@@ -38,7 +38,7 @@
       "/providers/Microsoft.Subscription/subscriptionOperations/{operationId}":{  
          "get":{  
             "description":"Retrieves the status of the subscription definition POST operation. The URI of this API is returned in the Location field of the response header.",
-            "operationId":"getSubscriptionOperation",
+            "operationId":"SubscriptionOperations_Get",
             "responses":{  
                "202":{  
                   "description":"Accepted. Subscription update is in progress.",
@@ -78,7 +78,7 @@
       "/providers/Microsoft.Subscription/subscriptionOperations":{  
          "get":{  
             "description":"Lists all of the available pending Microsoft.Subscription API operations.",
-            "operationId":"getSubscriptionOperations",
+            "operationId":"SubscriptionOperations_List",
             "responses":{  
                "200":{  
                   "description":"OK. The request has succeeded.",
@@ -97,7 +97,7 @@
       "/{scope}/providers/Microsoft.Subscription/createSubscription":{  
          "post":{  
             "description":"Creates an Azure subscription",
-            "operationId":"subscriptionFactory_createSubscription",
+            "operationId":"SubscriptionFactory_CreateSubscription",
             "x-ms-long-running-operation":true,
             "responses":{  
                "200":{  
@@ -162,7 +162,7 @@
                "items":{  
                   "$ref":"#/definitions/AdPrincipal"
                },
-               "description":"An array of Active Directory Principals"
+               "description":"The list of principals that should be granted Owner access on the subscription."
             },
             "offerId":{  
                "description":"The offer type of the subscription. For example, MS-AZR-0017P (EnterpriseAgreement) and MS-AZR-0148P (EnterpriseAgreement devTest) are available. Only valid when creating a subscription in a billing account scope.",
@@ -204,9 +204,9 @@
          ]
       },
       "SubscriptionOperationListResult":{  
-         "description":"status of the subscription POST operation.",
+         "description":"A list of subscription operations.",
          "properties":{  
-            "pendingOperations":{  
+            "value":{  
                "type":"array",
                "items":{  
                   "$ref":"#/definitions/SubscriptionOperation"
