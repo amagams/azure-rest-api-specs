@@ -2,8 +2,8 @@
    "swagger":"2.0",
    "info":{  
       "version":"1",
-      "title":"SubscriptionCreationClient",
-      "description":"Subscription creation client provides an interface to create, modify and retrieve azure subscriptions programmatically."
+      "title":"SubscriptionManagementClient",
+      "description":"Subscription management client provides an interface to create and manage Azure subscriptions programmatically."
    },
    "schemes":[  
       "https"
@@ -17,7 +17,7 @@
    ],
    "paths":{  
       "/providers/Microsoft.Subscription/subscriptionOperations/{operationId}":{  
-         "get":{
+         "get":{  
             "description":"Retrieves the status of the subscription definition POST operation. The URI of this API is returned in the Location field of the response header.",
             "operationId":"getSubscriptionOperation",
             "responses":{  
@@ -59,12 +59,12 @@
       "/providers/Microsoft.Subscription/subscriptionOperations":{  
          "get":{  
             "description":"Lists all of the available pending Microsoft.Subscription API operations.",
-            "operationId":"getAllSubscriptionOperations",
+            "operationId":"getSubscriptionOperations",
             "responses":{  
                "200":{  
                   "description":"OK. The request has succeeded.",
                   "schema":{  
-                     "$ref":"#/definitions/OperationListResult"
+                     "$ref":"#/definitions/SubscriptionOperationListResult"
                   }
                }
             },
@@ -78,8 +78,8 @@
       "/{scope}/providers/Microsoft.Subscription/createSubscription":{  
          "post":{  
             "description":"Creates an Azure subscription",
-            "operationId":"createAzureSubscription",
-            "x-ms-long-running-operation": true,
+            "operationId":"subscriptionFactory_createSubscription",
+            "x-ms-long-running-operation":true,
             "responses":{  
                "200":{  
                   "description":"Normal response for a successful query. The response body will contain the data that matches the filters specified in the query parameters.",
@@ -105,7 +105,7 @@
                {  
                   "name":"scope",
                   "in":"path",
-                  "description":"Uri path corresponding to commercial subscription or legacy subscription",
+                  "description":"The scope of the subscription creation. Valid scopes include: providers/Microsoft.Billing/billingAccounts/{accountId}",
                   "required":true,
                   "type":"string"
                },
@@ -115,10 +115,10 @@
                {  
                   "name":"body",
                   "in":"body",
-                  "description":"The subscription creation request object.",
+                  "description":"The subscription creation parameters.",
                   "required":true,
                   "schema":{  
-                     "$ref":"#/definitions/SubscriptionCreationRequest"
+                     "$ref":"#/definitions/SubscriptionCreationParameters"
                   }
                }
             ]
@@ -128,17 +128,17 @@
    "definitions":{  
       "SubscriptionCreationResult":{  
          "properties":{  
-            "subscriptionId":{  
+            "subscriptionLink":{  
                "type":"string"
             }
          }
       },
-      "SubscriptionCreationRequest":{  
+      "SubscriptionCreationParameters":{  
          "properties":{  
-            "subscriptionDisplayName":{  
+            "displayName":{  
                "type":"string"
             },
-            "Owners":{  
+            "owners":{  
                "type":"array",
                "items":{  
                   "$ref":"#/definitions/AdPrincipal"
@@ -146,6 +146,7 @@
                "description":"An array of Active Directory Principals"
             },
             "offerId":{  
+               "description":"The offer type of the subscription. For example, MS-AZR-0017P (EnterpriseAgreement) and MS-AZR-0148P (EnterpriseAgreement devTest) are available. Only valid when creating a subscription in a billing account scope.",
                "type":"string"
             }
          }
@@ -169,15 +170,21 @@
          "properties":{  
             "tenantId":{  
                "description":"Tenant id of the Principal",
+               "format":"uuid",
                "type":"string"
             },
             "objectId":{  
                "description":"Object id of the Principal",
+               "format":"uuid",
                "type":"string"
             }
-         }
+         },
+         "required":[  
+            "tenantId",
+            "objectId"
+         ]
       },
-      "OperationListResult":{  
+      "SubscriptionOperationListResult":{  
          "description":"status of the subscription POST operation.",
          "properties":{  
             "pendingOperations":{  
@@ -209,6 +216,17 @@
          "required":true,
          "type":"string",
          "description":"Version of the API to be used with the client request. Current version is 2015-06-01"
+      }
+   },
+   "securityDefinitions":{  
+      "azure_auth":{  
+         "type":"oauth2",
+         "authorizationUrl":"https://login.microsoftonline.com/common/oauth2/authorize",
+         "flow":"implicit",
+         "description":"Azure Active Directory OAuth2 Flow",
+         "scopes":{  
+            "user_impersonation":"impersonate your user account"
+         }
       }
    }
 }
