@@ -145,10 +145,10 @@
     }
   },
   "definitions":{  
-    "SubscriptionCreationResult":{
+    "SubscriptionCreationResult":{  
       "description":"The created subscription object.",
       "properties":{  
-        "subscriptionLink":{
+        "subscriptionLink":{  
           "description":"The link to the new subscription.",
           "type":"string"
         }
@@ -227,11 +227,11 @@
           "description":"The operation Id.",
           "readOnly":true
         },
-        "status":{
+        "status":{  
           "description":"Status of the pending subscription",
           "type":"string"
         },
-        "status_detail":{
+        "status_detail":{  
           "description":"Status Detail of the pending subscription",
           "type":"string"
         }
