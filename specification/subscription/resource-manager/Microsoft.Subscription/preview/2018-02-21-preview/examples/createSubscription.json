@@ -1,0 +1,36 @@
+{
+  "parameters": {
+    "scope": "/providers/Microsoft.Billing/billingAccounts/73f7ab6e-cfa0-42be-b506-be6e77c2700c/",
+    "api-version": "2017-11-01-preview",
+    "body": {
+      "properties": {
+        "offerType": "",
+        "displayName": "",
+        "owners": [
+          {
+            "tenantId": "73f7ab6e-cfa0-42be-b506-be6e77c2700c",
+            "objectId": "73f7ab6e-cfa0-42be-b506-be6e77c2700c"
+          },
+          {
+            "tenantId": "73f7ab6e-cfa0-42be-b506-be6e77c2700c",
+            "objectId": "73f7ab6e-cfa0-42be-b506-be6e77c2700c"
+          }
+        ]
+      }
+    }
+  },
+  "responses": {
+    "202": {
+      "headers": {
+        "Location":
+          "/providers/Microsoft.Subscription/subscriptionOperations/aeb76128-ebde-4f5a-a9ed-e7bbf2dbc994?api-version=2017-11-01-preview",
+        "Retry-After": "60"
+      }
+    },
+    "200": {
+      "body": {
+        "subscriptionLink": "/subscriptions/c03acf6e-5295-44c2-92d3-cb1daa4c701c"
+      }
+    }
+  }
+}

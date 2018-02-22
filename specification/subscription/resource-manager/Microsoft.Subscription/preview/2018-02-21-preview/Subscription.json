@@ -20,6 +20,11 @@
       "get": {
         "description": "Lists all of the available Microsoft.Subscription API operations.",
         "operationId": "Operations_List",
+        "x-ms-examples": {
+          "getOperations": {
+            "$ref": "./examples/getOperations.json"
+          }
+        },
         "parameters": [
           {
             "$ref": "#/parameters/apiVersionParameter"
@@ -39,6 +44,11 @@
       "get": {
         "description": "Retrieves the status of the subscription definition POST operation.",
         "operationId": "SubscriptionOperations_Get",
+        "x-ms-examples": {
+          "getSubscriptionOperation": {
+            "$ref": "./examples/getOperation.json"
+          }
+        },
         "responses": {
           "202": {
             "description": "Accepted. Subscription update is in progress.",
@@ -79,6 +89,11 @@
       "get": {
         "description": "Lists all of the available pending Microsoft.Subscription API operations.",
         "operationId": "SubscriptionOperations_List",
+        "x-ms-examples": {
+          "getPendingSubscriptionOperations": {
+            "$ref": "./examples/getPendingSubscriptionOperations.json"
+          }
+        },
         "responses": {
           "200": {
             "description": "OK. The request has succeeded.",
@@ -98,6 +113,11 @@
       "post": {
         "description": "Creates an Azure subscription",
         "operationId": "SubscriptionFactory_CreateSubscription",
+        "x-ms-examples": {
+          "createSubscription": {
+            "$ref": "./examples/createSubscription.json"
+          }
+        },
         "x-ms-long-running-operation": true,
         "responses": {
           "200": {
@@ -168,7 +188,7 @@
           },
           "description": "The list of principals that should be granted Owner access on the subscription."
         },
-        "offerId": {
+        "offerType": {
           "description": "The offer type of the subscription. For example, MS-AZR-0017P (EnterpriseAgreement) and MS-AZR-0148P (EnterpriseAgreement devTest) are available. Only valid when creating a subscription in a billing account scope.",
           "type": "string"
         }
@@ -208,7 +228,7 @@
       ]
     },
     "SubscriptionOperationListResult": {
-      "description": "A list of subscription operations.",
+      "description": "A list of pending subscription operations.",
       "properties": {
         "value": {
           "description": "A list of pending SubscriptionOperations",
@@ -231,7 +251,7 @@
           "description": "Status of the pending subscription",
           "type": "string"
         },
-        "status_detail": {
+        "statusDetail": {
           "description": "Status Detail of the pending subscription",
           "type": "string"
         }
