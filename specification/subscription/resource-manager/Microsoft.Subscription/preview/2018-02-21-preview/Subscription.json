@@ -52,7 +52,7 @@
         "operationId": "SubscriptionOperations_Get",
         "x-ms-examples": {
           "getSubscriptionOperation": {
-            "$ref": "./examples/getOperation.json"
+            "$ref": "./examples/getSubscriptionOperation.json"
           }
         },
         "responses": {
