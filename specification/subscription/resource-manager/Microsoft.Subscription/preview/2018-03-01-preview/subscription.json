@@ -76,7 +76,7 @@
         ]
       }
     },
-    "/{scope}/providers/Microsoft.Subscription/createSubscription": {
+    "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/providers/Microsoft.Subscription/createSubscription": {
       "post": {
         "description": "Creates an Azure subscription",
         "operationId": "SubscriptionFactory_CreateSubscription",
@@ -115,9 +115,9 @@
         },
         "parameters": [
           {
-            "name": "scope",
+            "name": "billingAccountName",
             "in": "path",
-            "description": "The scope of the subscription creation. Valid scopes include: providers/Microsoft.Billing/billingAccounts/{accountId}",
+            "description": "The Billing Account Name",
             "required": true,
             "type": "string"
           },

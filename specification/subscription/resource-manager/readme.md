@@ -90,6 +90,11 @@ swagger-to-sdk:
   - repo: azure-sdk-for-go
 ```
 
+## Suppress warnings
+``` yaml 
+directive: 
+  - suppress: R2059
+```
 
 ## C#
 
