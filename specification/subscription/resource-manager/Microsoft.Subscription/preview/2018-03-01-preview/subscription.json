@@ -79,7 +79,7 @@
     "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/providers/Microsoft.Subscription/createSubscription": {
       "post": {
         "description": "Creates an Azure subscription",
-        "operationId": "SubscriptionFactory_CreateSubscription",
+        "operationId": "SubscriptionFactory_CreateSubscriptionInBillingAccount",
         "x-ms-examples": {
           "createSubscription": {
             "$ref": "./examples/createSubscription.json"

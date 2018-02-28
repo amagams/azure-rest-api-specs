@@ -19,7 +19,7 @@ To see additional help and options, run:
 
 ## Configuration
 
-## Suppress warnings
+## Suppression
 ``` yaml 
 directive: 
   - suppress: R2059
