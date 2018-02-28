@@ -159,6 +159,21 @@ Please also specify `--go-sdk-folder=<path to the root directory of your azure-s
 output-folder: $(go-sdk-folder)/services/subscription/mgmt/2018-03-01-preview/subscription
 ```
 
+### Go multi-api
+
+``` yaml $(go) && $(multiapi)
+batch:
+  - tag: package-2017-11-preview
+```
+
+### Tag: package-2017-11-preview and go
+
+These settings apply only when `--tag=package-2017-11-preview --go` is specified on the command line.
+Please also specify `--go-sdk-folder=<path to the root directory of your azure-sdk-for-go clone>`.
+
+``` yaml $(tag)=='package-2017-11-preview' && $(go)
+output-folder: $(go-sdk-folder)/services/subscription/mgmt/2017-11-01-preview/subscription
+```
 
 ## Java
 
