@@ -29,6 +29,10 @@ openapi-type: arm
 tag: package-2018-03-01-preview
 ```
 
+``` yaml
+openapi-type: arm
+tag: package-2017-11-preview
+```
 
 ### Tag: package-2018-03-01-preview
 
@@ -51,6 +55,26 @@ title: SubscriptionClient
 description: The subscription client
 ```
 
+### Tag: package-2017-11-preview
+
+These settings apply only when `--tag=package-2017-11-preview` is specified on the command line.
+
+``` yaml $(tag) == 'package-2017-11-preview'
+input-file:
+- Microsoft.Subscription/preview/2017-11-01-preview/subscriptionDefinitions.json
+```
+
+### Tag: package-all-subscription
+
+These settings apply only when `--tag=package-all-subscription` is specified on the command line.
+
+``` yaml $(tag) == 'package-all-subscription'
+input-file:
+- Microsoft.Subscription/preview/2017-11-01-preview/subscriptionDefinitions.json
+- ../../resources/resource-manager/Microsoft.Resources/stable/2016-06-01/subscriptions.json
+title: SubscriptionClient
+description: The subscription client
+```
 
 ---
 # Code Generation
